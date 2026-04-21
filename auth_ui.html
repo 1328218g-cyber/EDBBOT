@@ -1,0 +1,39 @@
+<!-- 인증 오버레이 -->
+<div id="authOverlay" style="display:none; position:fixed; inset:0; background:rgba(15, 23, 42, 0.9); z-index:9999; align-items:center; justify-content:center; backdrop-filter:blur(8px);">
+  <div style="background:#fff; border-radius:24px; padding:40px; width:400px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); text-align:center;">
+    <div style="font-size:48px; margin-bottom:20px;">🔒</div>
+    <h2 style="margin:0 0 10px; font-size:22px; font-weight:800; color:#1e293b;">봇 실행 권한이 없습니다</h2>
+    <p style="margin:0 0 30px; font-size:14px; color:#64748b; line-height:1.6;">이 기기는 아직 인증되지 않았습니다.<br>봇을 사용하려면 관리자에게 권한을 신청하세요.</p>
+    
+    <div style="background:#f8fafc; border-radius:12px; padding:15px; margin-bottom:25px; border:1px solid #e2e8f0;">
+      <div style="font-size:11px; color:#94a3b8; margin-bottom:5px; font-weight:600; text-transform:uppercase;">나의 하드키 (고유 식별자)</div>
+      <div id="myHardkeyDisplay" style="font-family:'JetBrains Mono', monospace; font-size:13px; color:#7c3aed; font-weight:700; word-break:break-all;">불러오는 중...</div>
+    </div>
+
+    <button onclick="openRequestModal()" style="width:100%; padding:14px; background:#7c3aed; color:#fff; border:none; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer; transition:all 0.2s;">
+      권한 신청하기
+    </button>
+  </div>
+</div>
+
+<!-- 권한 신청 모달 -->
+<div id="requestModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:20px; padding:30px; width:360px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);">
+    <h3 style="margin:0 0 20px; font-size:18px; font-weight:800; color:#1e293b;">📝 권한 신청 양식</h3>
+    
+    <div style="margin-bottom:15px;">
+      <label style="display:block; font-size:12px; color:#64748b; font-weight:600; margin-bottom:5px;">DJ 닉네임</label>
+      <input id="reqDjName" type="text" placeholder="예: 홍길동" style="width:100%; padding:10px 12px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px; box-sizing:border-box;">
+    </div>
+    
+    <div style="margin-bottom:20px;">
+      <label style="display:block; font-size:12px; color:#64748b; font-weight:600; margin-bottom:5px;">고유닉 (Spoon ID)</label>
+      <input id="reqSpoonId" type="text" placeholder="예: gildong123" style="width:100%; padding:10px 12px; border:1px solid #e2e8f0; border-radius:8px; font-size:14px; box-sizing:border-box;">
+    </div>
+
+    <div style="display:flex; gap:10px;">
+      <button onclick="closeRequestModal()" style="flex:1; padding:12px; background:#f1f5f9; color:#64748b; border:none; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer;">취소</button>
+      <button id="btnSubmitRequest" onclick="submitRequest()" style="flex:2; padding:12px; background:#7c3aed; color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer;">신청 완료</button>
+    </div>
+  </div>
+</div>
